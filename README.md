@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Password Generator
+
+Next.js で作成したレスポンシブ対応のパスワード生成 Web アプリです。
+
+## Features
+
+- 文字数を指定したパスワード生成
+- Lowercase / Uppercase / Numbers / Symbols の切り替え
+- 全トグル OFF 時のランダム顔文字・絵文字生成
+- パスワードのコピー
+- パスワード履歴の表示
+- 履歴のお気に入り登録・削除
+- Light / Dark テーマ切り替え
+- iPhone SE からデスクトップまでのレスポンシブレイアウト
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- shadcn / tw-animate-css
+- Iconify
+- next-themes
+- Bun
 
 ## Getting Started
 
-First, run the development server:
+依存関係をインストールします。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開発サーバーを起動します。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[http://localhost:3000](http://localhost:3000) をブラウザで開きます。
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+bun run dev
+bun run lint
+bun run build
+bun run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+app/
+  globals.css
+  layout.tsx
+  page.tsx
+components/
+  theme-provider.tsx
+  ui/
+features/
+  password-generator/
+    components/
+    constants.ts
+    password-generator-app.tsx
+    password-utils.ts
+    types.ts
+    use-password-generator.ts
+lib/
+  utils.ts
+```
 
-## Deploy on Vercel
+## Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- テーマ色は `app/globals.css` の CSS 変数で管理しています。
+- Light / Dark の切り替えは `next-themes` を使用しています。
+- UI の色指定は `bg-background`, `text-foreground`, `bg-card`, `text-card-foreground` などの Tailwind クラスを優先しています。
+- パスワード生成ロジックは `features/password-generator/password-utils.ts` に集約しています。
