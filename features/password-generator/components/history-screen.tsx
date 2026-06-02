@@ -67,7 +67,7 @@ export function HistoryScreen({
                   ? "solar:heart-bold"
                   : "solar:heart-linear"
               }
-              className={historyFilter === "favorites" ? "text-[#ff9f00]" : ""}
+              className={historyFilter === "favorites" ? "text-amber-500" : ""}
             />
             Favorites
           </button>

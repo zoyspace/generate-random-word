@@ -24,8 +24,8 @@ export function HistoryCard({
   return (
     <article
       className={cn(
-        "rounded-xl border-2 border-border bg-card px-4 py-5 text-card-foreground shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 dark:shadow-[0_8px_20px_rgba(0,0,0,0.24)] sm:rounded-2xl sm:px-5 sm:py-6",
-        item.favorite && "border-[#ffd15c] shadow-[0_12px_28px_rgba(250,190,70,0.16)]",
+        "rounded-xl border-2 border-border bg-card px-4 py-5 text-card-foreground shadow-lg transition hover:-translate-y-1 sm:rounded-2xl sm:px-5 sm:py-6",
+        item.favorite && "border-amber-300 shadow-amber-200/40",
       )}
     >
       <div>

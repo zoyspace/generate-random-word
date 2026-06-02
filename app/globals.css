@@ -48,6 +48,10 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@theme {
+  --breakpoint-xs: 390px;
+}
+
 :root {
   --background: oklch(0.94 0.035 278);
   --foreground: oklch(0.22 0.04 260);

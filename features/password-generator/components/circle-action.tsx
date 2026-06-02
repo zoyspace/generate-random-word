@@ -20,8 +20,8 @@ export function CircleAction({
       type="button"
       aria-label={label}
       className={cn(
-        "grid size-8 place-items-center rounded-full bg-card text-card-foreground shadow-[0_3px_8px_rgba(15,23,42,0.24)] transition hover:scale-105 dark:shadow-[0_3px_8px_rgba(0,0,0,0.36)] sm:size-9",
-        active && "bg-[#fff0bd] text-[#ff9f00]",
+        "grid size-8 place-items-center rounded-full bg-card text-card-foreground shadow-md transition hover:scale-105 sm:size-9",
+        active && "bg-amber-100 text-amber-500",
       )}
       onClick={onClick}
     >

@@ -33,9 +33,9 @@ export function GeneratorScreen({
   settings,
 }: GeneratorScreenProps) {
   return (
-    <section className="mx-auto min-h-[calc(100dvh-24px)] w-full max-w-125 rounded-[22px] bg-card px-4 py-7 text-card-foreground shadow-[0_20px_70px_rgba(120,130,180,0.16)] animate-in fade-in zoom-in-95 duration-500 dark:shadow-[0_20px_70px_rgba(0,0,0,0.28)] sm:rounded-[24px] sm:px-8 sm:py-8">
+    <section className="mx-auto min-h-dvh w-full max-w-125 rounded-3xl bg-card px-4 py-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:py-8">
       <header className="mb-7 flex items-start justify-between gap-3 sm:mb-8 sm:gap-4">
-        <h1 className="min-w-0 text-left text-[clamp(2rem,10vw,2.25rem)] font-black leading-[0.95] tracking-tight sm:text-4xl">
+        <h1 className="min-w-0 text-left text-4xl font-black leading-none tracking-tight sm:text-5xl">
           <span className="block">Password</span>
           <span className="block">Generator</span>
         </h1>
@@ -81,7 +81,7 @@ export function GeneratorScreen({
       </div>
 
       <label className="mb-7 block text-lg font-medium sm:mb-8 sm:text-xl">
-        Password Length:{" "}
+        Length:{" "}
         <span className="text-xl font-bold tabular-nums sm:text-2xl">
           {settings.length}
         </span>
@@ -100,7 +100,7 @@ export function GeneratorScreen({
         />
       </label>
 
-      <div className="mb-6 grid grid-cols-2 gap-1.5 sm:grid-cols-4 sm:gap-2">
+      <div className="mb-6 grid grid-cols-2 gap-2 xs:grid-cols-4 xs:gap-1.5 sm:gap-2">
         <OptionCard
           title="Lowercase"
           hint="abc..."

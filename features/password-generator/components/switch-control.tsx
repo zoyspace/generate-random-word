@@ -12,14 +12,14 @@ export function SwitchControl({ checked, onChange }: SwitchControlProps) {
       role="switch"
       aria-checked={checked}
       className={cn(
-        "relative inline-flex h-7 w-12 items-center rounded-full p-1 shadow-[inset_0_1px_4px_rgba(0,0,0,0.18)] transition sm:h-8 sm:w-14",
+        "relative inline-flex h-6 w-11 items-center rounded-full p-1 shadow-inner transition xs:h-7 xs:w-12 sm:h-8 sm:w-14",
         checked ? "bg-primary" : "bg-muted",
       )}
       onClick={() => onChange(!checked)}
     >
       <span
         className={cn(
-          "size-5 rounded-full bg-white shadow-md transition-transform duration-300 sm:size-6",
+          "size-4 rounded-full bg-white shadow-md transition-transform duration-300 xs:size-5 sm:size-6",
           checked && "translate-x-5 sm:translate-x-6",
         )}
       />
