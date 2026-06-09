@@ -20,6 +20,7 @@ export const usePasswordGenerator = () => {
   const [settings, setSettings] = useState<PasswordSettings>(DEFAULT_SETTINGS);
   const [history, setHistory] = useState<HistoryItem[]>(INITIAL_HISTORY);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const initializedRef = useRef(false);
   const lengthHistoryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
@@ -104,6 +105,14 @@ export const usePasswordGenerator = () => {
   };
 
   useEffect(() => {
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      const initialPassword = createPassword(DEFAULT_SETTINGS);
+
+      setPassword(initialPassword);
+      setHistory([createHistoryItem(initialPassword)]);
+    }
+
     return () => {
       if (lengthHistoryTimeoutRef.current) {
         clearTimeout(lengthHistoryTimeoutRef.current);
