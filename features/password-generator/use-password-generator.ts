@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   CURRENT_PASSWORD_COPY_ID,
-  DEFAULT_PASSWORD,
   DEFAULT_SETTINGS,
   INITIAL_HISTORY,
 } from "./constants";
@@ -17,7 +16,7 @@ const COPY_FEEDBACK_MS = 1200;
 export const usePasswordGenerator = () => {
   const [screen, setScreen] = useState<Screen>("generator");
   const [historyFilter, setHistoryFilter] = useState<HistoryFilter>("all");
-  const [password, setPassword] = useState(DEFAULT_PASSWORD);
+  const [password, setPassword] = useState("");
   const [settings, setSettings] = useState<PasswordSettings>(DEFAULT_SETTINGS);
   const [history, setHistory] = useState<HistoryItem[]>(INITIAL_HISTORY);
   const [copiedId, setCopiedId] = useState<string | null>(null);
