@@ -40,8 +40,8 @@ export function HistoryScreen({
         </button>
       </header>
 
-      <div className="overflow-hidden rounded-2xl bg-muted">
-        <div className="grid grid-cols-2 gap-2 p-2 text-base font-semibold text-muted-foreground sm:gap-3 sm:p-3 sm:text-xl">
+      <div>
+        <div className="grid grid-cols-2 gap-2 rounded-2xl bg-muted p-2 text-base font-semibold text-muted-foreground sm:gap-3 sm:p-3 sm:text-xl">
           <button
             type="button"
             className={cn(
@@ -73,7 +73,7 @@ export function HistoryScreen({
           </button>
         </div>
 
-        <div className="space-y-3 rounded-t-2xl bg-card p-3 sm:space-y-4 sm:p-5">
+        <div className="space-y-3 rounded-t-2xl p-3 sm:space-y-4 sm:p-5">
           {history.length > 0 ? (
             history.map((item) => (
               <HistoryCard

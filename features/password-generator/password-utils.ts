@@ -89,14 +89,18 @@ export const createPassword = ({
   return shuffle(characters.slice(0, length));
 };
 
-export const getPasswordLines = (value: string) => {
+export const getPasswordLines = (value: string, lineLength = 20) => {
   const graphemes = getGraphemes(value);
 
-  if (graphemes.length <= 20) {
+  if (graphemes.length <= lineLength) {
     return [value];
   }
 
-  return [graphemes.slice(0, 20).join(""), graphemes.slice(20).join("")];
+  return Array.from(
+    { length: Math.ceil(graphemes.length / lineLength) },
+    (_, index) =>
+      graphemes.slice(index * lineLength, (index + 1) * lineLength).join(""),
+  );
 };
 
 export const createHistoryItem = (password: string): HistoryItem => ({

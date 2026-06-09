@@ -29,12 +29,11 @@ export function HistoryCard({
       )}
     >
       <div>
-        <p className="mb-5 flex items-center gap-1.5 text-sm font-medium text-muted-foreground sm:mb-6 sm:gap-2 sm:text-base">
-          <Icon icon="solar:clock-circle-linear" />
-          {item.createdAt}
-        </p>
-        <div className="flex items-center justify-between gap-3">
-          <PasswordValue value={item.password} className="text-lg sm:text-xl" />
+        <div className="mb-5 flex items-center justify-between gap-2 sm:mb-6">
+          <p className="flex min-w-0 items-center gap-1.5 text-sm font-medium text-muted-foreground sm:gap-2 sm:text-base">
+            <Icon icon="solar:clock-circle-linear" />
+            {item.createdAt}
+          </p>
           <div className="flex shrink-0 gap-1.5 text-base sm:gap-2 sm:text-lg">
             <CircleAction
               label="Copy password"
@@ -54,6 +53,11 @@ export function HistoryCard({
             />
           </div>
         </div>
+        <PasswordValue
+          value={item.password}
+          lineLength={32}
+          className="text-lg sm:text-xl"
+        />
       </div>
     </article>
   );

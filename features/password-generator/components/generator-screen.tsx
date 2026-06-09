@@ -33,7 +33,7 @@ export function GeneratorScreen({
   settings,
 }: GeneratorScreenProps) {
   return (
-    <section className="mx-auto min-h-dvh w-full max-w-125 rounded-3xl bg-card px-4 py-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:py-8">
+    <section className="mx-auto w-full max-w-125 rounded-3xl bg-card px-4 pb-12 pt-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:pb-14 sm:pt-8">
       <header className="mb-7 flex items-start justify-between gap-3 sm:mb-8 sm:gap-4">
         <h1 className="min-w-0 text-left text-4xl font-black leading-none tracking-tight sm:text-5xl">
           <span className="block">Password</span>
@@ -52,13 +52,15 @@ export function GeneratorScreen({
         </div>
       </header>
 
-      <div className="mb-4 flex min-h-24 items-center justify-between gap-2 rounded-2xl bg-muted px-4 py-4 text-foreground sm:min-h-28 sm:gap-3 sm:px-6 sm:py-5">
-        <PasswordValue value={password} className="text-lg sm:text-2xl" />
-        <div className="flex shrink-0 items-center gap-2 text-lg sm:gap-3 sm:text-xl">
+      <div className="relative mb-4">
+        <div className="flex min-h-24 items-center rounded-2xl bg-muted px-4 py-4 text-foreground sm:min-h-28 sm:px-6 sm:py-5">
+          <PasswordValue value={password} className="text-lg sm:text-2xl" />
+        </div>
+        <div className="absolute -top-4 right-3 flex items-center gap-2 text-lg sm:-top-5 sm:right-4 sm:text-xl">
           <button
             type="button"
             aria-label="Generate password"
-            className="transition hover:scale-110"
+            className="grid size-9 place-items-center rounded-full bg-muted shadow-sm transition hover:scale-110 sm:size-10"
             onClick={onGenerate}
           >
             <Icon icon="solar:refresh-linear" />
@@ -66,7 +68,7 @@ export function GeneratorScreen({
           <button
             type="button"
             aria-label="Copy password"
-            className="transition hover:scale-110"
+            className="grid size-9 place-items-center rounded-full bg-muted shadow-sm transition hover:scale-110 sm:size-10"
             onClick={onCopyCurrent}
           >
             <Icon
