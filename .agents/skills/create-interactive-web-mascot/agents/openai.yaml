@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Interactive Web Mascot"
+  short_description: "Design and implement animated web mascots"
+  default_prompt: "Use $create-interactive-web-mascot to design and add a clickable walking mascot to this web app."
