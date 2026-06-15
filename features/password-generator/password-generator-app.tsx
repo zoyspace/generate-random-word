@@ -24,7 +24,7 @@ export function PasswordGeneratorApp() {
   } = usePasswordGenerator();
 
   return (
-    <main className="min-h-dvh bg-background px-3 py-3 text-foreground transition-colors sm:px-4">
+    <main className="flex min-h-dvh flex-col bg-background px-3 py-3 text-foreground transition-colors sm:px-4">
       {screen === "generator" ? (
         <GeneratorScreen
           copiedId={copiedId}

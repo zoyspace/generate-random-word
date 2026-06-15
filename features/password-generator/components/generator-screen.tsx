@@ -33,7 +33,7 @@ export function GeneratorScreen({
   settings,
 }: GeneratorScreenProps) {
   return (
-    <section className="mx-auto w-full max-w-125 rounded-3xl bg-card px-4 pb-12 pt-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:pb-14 sm:pt-8">
+    <section className="mx-auto my-auto w-full max-w-125 rounded-3xl bg-card px-4 pb-10 pt-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:pb-14 sm:pt-8">
       <header className="mb-7 flex items-start justify-between gap-3 sm:mb-8 sm:gap-4">
         <h1 className="min-w-0 text-left text-4xl font-black leading-none tracking-tight sm:text-5xl">
           <span className="block">Password</span>
@@ -53,18 +53,10 @@ export function GeneratorScreen({
       </header>
 
       <div className="relative mb-4">
-        <div className="flex min-h-24 items-center rounded-2xl bg-muted px-4 py-4 text-foreground sm:min-h-28 sm:px-6 sm:py-5">
+        <div className="flex min-h-24 items-center rounded-2xl bg-muted py-4 pl-4 pr-14 text-foreground sm:min-h-28 sm:py-5 sm:pl-6 sm:pr-16">
           <PasswordValue value={password} className="text-lg sm:text-2xl" />
         </div>
-        <div className="absolute -top-4 right-3 flex items-center gap-2 text-lg sm:-top-5 sm:right-4 sm:text-xl">
-          <button
-            type="button"
-            aria-label="Generate password"
-            className="grid size-9 place-items-center rounded-full bg-muted shadow-sm transition hover:scale-110 sm:size-10"
-            onClick={onGenerate}
-          >
-            <Icon icon="solar:refresh-linear" />
-          </button>
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-lg sm:right-4 sm:text-xl">
           <button
             type="button"
             aria-label="Copy password"
@@ -129,14 +121,25 @@ export function GeneratorScreen({
         />
       </div>
 
-      <div className="mt-7 flex justify-center sm:mt-8">
+      <div className="mt-7 flex items-center justify-between sm:mt-8">
         <Button
           variant="outline"
-          className="h-11 rounded-xl px-5 text-base font-bold shadow-md sm:h-12 sm:px-6 sm:text-lg"
+          className="h-11 min-w-0 rounded-xl px-4 text-base font-bold shadow-md sm:h-12 sm:px-6 sm:text-lg"
           onClick={onOpenHistory}
         >
           View Password History
         </Button>
+        <button
+          type="button"
+          aria-label="Generate password"
+          className="group grid size-14 shrink-0 -translate-y-1 place-items-center rounded-full bg-primary text-2xl text-primary-foreground shadow-[0_12px_24px_rgb(0_0_0_/_35%),0_4px_8px_rgb(0_0_0_/_20%)] transition duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-primary/80 hover:shadow-[0_18px_32px_rgb(0_0_0_/_40%),0_6px_12px_rgb(0_0_0_/_24%)] active:translate-y-0 active:scale-95 active:shadow-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:size-16 sm:text-3xl"
+          onClick={onGenerate}
+        >
+          <Icon
+            icon="solar:refresh-linear"
+            className="transition-transform duration-500 group-active:rotate-180"
+          />
+        </button>
       </div>
     </section>
   );

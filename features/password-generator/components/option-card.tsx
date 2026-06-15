@@ -9,7 +9,11 @@ type OptionCardProps = {
 
 export function OptionCard({ title, hint, checked, onChange }: OptionCardProps) {
   return (
-    <label className="flex h-28 flex-col justify-between rounded-2xl border-3 border-border bg-card px-3 py-3 text-card-foreground transition hover:-translate-y-1 hover:shadow-lg xs:h-32 xs:px-2 xs:py-3 sm:rounded-lg sm:border-4 sm:px-2.5 sm:py-3.5">
+    <div
+      className={`flex h-28 flex-col justify-between rounded-2xl border-3 bg-card px-3 py-3 text-card-foreground transition hover:-translate-y-1 hover:shadow-lg xs:h-32 xs:px-2 xs:py-3 sm:rounded-lg sm:border-4 sm:px-2.5 sm:py-3.5 ${
+        checked ? "border-primary" : "border-border"
+      }`}
+    >
       <span>
         <span className="block text-sm font-medium leading-tight xs:text-xs sm:text-base">
           {title}
@@ -19,8 +23,8 @@ export function OptionCard({ title, hint, checked, onChange }: OptionCardProps) 
         </span>
       </span>
       <span>
-        <SwitchControl checked={checked} onChange={onChange} />
+        <SwitchControl checked={checked} label={title} onChange={onChange} />
       </span>
-    </label>
+    </div>
   );
 }
