@@ -12,6 +12,7 @@ import type { HistoryFilter, HistoryItem, PasswordSettings, Screen } from "./typ
 
 const LENGTH_HISTORY_DEBOUNCE_MS = 450;
 const COPY_FEEDBACK_MS = 1200;
+const MAX_HISTORY_ITEMS = 500;
 
 export const usePasswordGenerator = () => {
   const [screen, setScreen] = useState<Screen>("generator");
@@ -41,7 +42,9 @@ export const usePasswordGenerator = () => {
   };
 
   const appendHistory = (nextPassword: string) => {
-    setHistory((items) => [createHistoryItem(nextPassword), ...items]);
+    setHistory((items) =>
+      [createHistoryItem(nextPassword), ...items].slice(0, MAX_HISTORY_ITEMS),
+    );
   };
 
   const generatePassword = (settingsOverride?: Partial<PasswordSettings>) => {
