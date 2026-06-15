@@ -132,7 +132,7 @@ export function GeneratorScreen({
         <button
           type="button"
           aria-label="Generate password"
-          className="group grid size-14 shrink-0 -translate-y-1 place-items-center rounded-full bg-primary text-2xl text-primary-foreground shadow-[0_12px_24px_rgb(0_0_0_/_35%),0_4px_8px_rgb(0_0_0_/_20%)] transition duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-primary/80 hover:shadow-[0_18px_32px_rgb(0_0_0_/_40%),0_6px_12px_rgb(0_0_0_/_24%)] active:translate-y-0 active:scale-95 active:shadow-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:size-16 sm:text-3xl"
+          className="group grid size-14 shrink-0 -translate-y-1 place-items-center rounded-full bg-primary text-2xl text-primary-foreground shadow-[0_12px_24px_rgb(0_0_0/35%),0_4px_8px_rgb(0_0_0/20%)] transition duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-primary/80 hover:shadow-[0_18px_32px_rgb(0_0_0/40%),0_6px_12px_rgb(0_0_0/24%)] active:translate-y-0 active:scale-95 active:shadow-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:size-16 sm:text-3xl"
           onClick={onGenerate}
         >
           <Icon
