@@ -51,7 +51,7 @@ export function PasswordGeneratorApp() {
           onFilterChange={setHistoryFilter}
         />
       )}
-      <PasswordMascot />
+      <PasswordMascot onGenerate={() => generatePassword()} />
     </main>
   );
 }

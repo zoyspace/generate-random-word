@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,7 +12,11 @@ const WALK_DISTANCE = 180;
 const WALK_DURATION_MS = 900;
 const FRAME_DURATION_MS = 120;
 
-export function PasswordMascot() {
+type PasswordMascotProps = {
+  onGenerate: () => void;
+};
+
+export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
   const [direction, setDirection] = useState<1 | -1>(1);
   const [facingDirection, setFacingDirection] = useState<1 | -1>(1);
   const [frameIndex, setFrameIndex] = useState(0);
@@ -47,6 +49,8 @@ export function PasswordMascot() {
     if (isWalking) {
       return;
     }
+
+    onGenerate();
 
     const mascotSize = window.innerWidth >= 640 ? 128 : 96;
     const pagePadding = window.innerWidth >= 640 ? 16 : 8;
