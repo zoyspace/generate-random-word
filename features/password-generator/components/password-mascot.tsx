@@ -86,7 +86,7 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
     <button
       type="button"
       aria-label="Make mascot walk"
-      className="fixed bottom-2 left-2 z-40 size-24 cursor-pointer drop-shadow-[0_10px_12px_rgb(0_0_0/25%)] transition-transform ease-linear hover:scale-105 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:bottom-4 sm:left-4 sm:size-32"
+      className="fixed bottom-2 left-2 z-40 size-24 cursor-pointer drop-shadow-[0_10px_12px_rgb(0_0_0/25%)] transition-transform ease-linear focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:bottom-4 sm:left-4 sm:size-32"
       style={{
         transform: `translateX(${position}px)`,
         transitionDuration: isWalking ? `${WALK_DURATION_MS}ms` : "200ms",
