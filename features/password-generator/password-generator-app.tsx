@@ -3,6 +3,7 @@
 import { CURRENT_PASSWORD_COPY_ID } from "./constants";
 import { GeneratorScreen } from "./components/generator-screen";
 import { HistoryScreen } from "./components/history-screen";
+import { PasswordMascot } from "./components/password-mascot";
 import { usePasswordGenerator } from "./use-password-generator";
 
 export function PasswordGeneratorApp() {
@@ -50,6 +51,7 @@ export function PasswordGeneratorApp() {
           onFilterChange={setHistoryFilter}
         />
       )}
+      <PasswordMascot />
     </main>
   );
 }
