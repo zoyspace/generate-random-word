@@ -19,6 +19,7 @@ type GeneratorScreenProps = {
     checked: boolean,
   ) => void;
   password: string;
+  passwordVersion: number;
   settings: PasswordSettings;
 };
 
@@ -30,6 +31,7 @@ export function GeneratorScreen({
   onOpenHistory,
   onSettingChange,
   password,
+  passwordVersion,
   settings,
 }: GeneratorScreenProps) {
   return (
@@ -55,7 +57,7 @@ export function GeneratorScreen({
       <div className="relative mb-4">
         <div className="flex min-h-24 items-center rounded-2xl bg-muted py-4 pl-4 pr-14 text-foreground sm:min-h-28 sm:py-5 sm:pl-6 sm:pr-16">
           <PasswordValue
-            key={password}
+            key={passwordVersion}
             value={password}
             className="animate-in fade-in slide-in-from-bottom-2 zoom-in-95 duration-300 motion-reduce:animate-none text-lg sm:text-2xl"
           />

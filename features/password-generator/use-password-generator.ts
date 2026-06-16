@@ -21,6 +21,7 @@ export const usePasswordGenerator = () => {
   const [settings, setSettings] = useState<PasswordSettings>(DEFAULT_SETTINGS);
   const [history, setHistory] = useState<HistoryItem[]>(INITIAL_HISTORY);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [passwordVersion, setPasswordVersion] = useState(0);
   const initializedRef = useRef(false);
   const lengthHistoryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -57,6 +58,7 @@ export const usePasswordGenerator = () => {
     const nextPassword = createPassword(nextSettings);
 
     setPassword(nextPassword);
+    setPasswordVersion((version) => version + 1);
     appendHistory(nextPassword);
   };
 
@@ -69,6 +71,7 @@ export const usePasswordGenerator = () => {
 
     setSettings(nextSettings);
     setPassword(nextPassword);
+    setPasswordVersion((version) => version + 1);
     clearPendingLengthHistory();
     lengthHistoryTimeoutRef.current = setTimeout(() => {
       appendHistory(nextPassword);
@@ -90,9 +93,12 @@ export const usePasswordGenerator = () => {
   };
 
   const copyPassword = async (value: string, id = CURRENT_PASSWORD_COPY_ID) => {
-    setCopiedId(id);
-    window.setTimeout(() => setCopiedId(null), COPY_FEEDBACK_MS);
-    await copyToClipboard(value);
+    const didCopy = await copyToClipboard(value);
+
+    if (didCopy) {
+      setCopiedId(id);
+      window.setTimeout(() => setCopiedId(null), COPY_FEEDBACK_MS);
+    }
   };
 
   const toggleFavorite = (id: string) => {
@@ -113,12 +119,14 @@ export const usePasswordGenerator = () => {
       const initialPassword = createPassword(DEFAULT_SETTINGS);
 
       setPassword(initialPassword);
+      setPasswordVersion((version) => version + 1);
       setHistory([createHistoryItem(initialPassword)]);
     }
 
     return () => {
       if (lengthHistoryTimeoutRef.current) {
         clearTimeout(lengthHistoryTimeoutRef.current);
+        lengthHistoryTimeoutRef.current = null;
       }
     };
   }, []);
@@ -131,6 +139,7 @@ export const usePasswordGenerator = () => {
     generatePassword,
     historyFilter,
     password,
+    passwordVersion,
     screen,
     setHistoryFilter,
     setScreen,

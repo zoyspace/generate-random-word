@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,6 +13,11 @@ const IDLE_FRAME = "/mascot/frames/idle-1.png";
 const WALK_DISTANCE = 180;
 const WALK_DURATION_MS = 900;
 const FRAME_DURATION_MS = 120;
+const SMALL_MASCOT_SIZE = 96;
+const LARGE_MASCOT_SIZE = 128;
+const SMALL_PAGE_PADDING = 8;
+const LARGE_PAGE_PADDING = 16;
+const SMALL_BREAKPOINT = 640;
 
 type PasswordMascotProps = {
   onGenerate: () => void;
@@ -40,6 +47,7 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
     () => () => {
       if (walkTimeoutRef.current) {
         clearTimeout(walkTimeoutRef.current);
+        walkTimeoutRef.current = null;
       }
     },
     [],
@@ -52,15 +60,17 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
 
     onGenerate();
 
-    const mascotSize = window.innerWidth >= 640 ? 128 : 96;
-    const pagePadding = window.innerWidth >= 640 ? 16 : 8;
+    const isLargeViewport = window.innerWidth >= SMALL_BREAKPOINT;
+    const mascotSize = isLargeViewport ? LARGE_MASCOT_SIZE : SMALL_MASCOT_SIZE;
+    const pagePadding = isLargeViewport ? LARGE_PAGE_PADDING : SMALL_PAGE_PADDING;
     const maxPosition = Math.max(
       0,
       window.innerWidth - mascotSize - pagePadding * 2,
     );
     const walkingDirection = direction;
+    const walkDistance = Math.min(WALK_DISTANCE, Math.max(maxPosition * 0.6, 0));
     let nextDirection = walkingDirection;
-    let nextPosition = position + WALK_DISTANCE * walkingDirection;
+    let nextPosition = position + walkDistance * walkingDirection;
 
     if (nextPosition >= maxPosition) {
       nextPosition = maxPosition;
@@ -85,8 +95,8 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
   return (
     <button
       type="button"
-      aria-label="Make mascot walk"
-      className="fixed bottom-2 left-2 z-40 size-24 cursor-pointer drop-shadow-[0_10px_12px_rgb(0_0_0/25%)] transition-transform ease-linear focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:bottom-4 sm:left-4 sm:size-32"
+      aria-label="Generate password with mascot"
+      className="fixed bottom-2 left-2 z-40 size-24 cursor-pointer drop-shadow-[0_10px_12px_rgb(0_0_0/25%)] transition-transform ease-linear motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:bottom-4 sm:left-4 sm:size-32"
       style={{
         transform: `translateX(${position}px)`,
         transitionDuration: isWalking ? `${WALK_DURATION_MS}ms` : "200ms",
@@ -97,9 +107,8 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
         src={isWalking ? WALK_FRAMES[frameIndex] : IDLE_FRAME}
         alt="Password generator mascot"
         fill
-        priority
         sizes="(min-width: 640px) 128px, 96px"
-        className="object-contain"
+        className="pointer-events-none object-contain"
         style={{ transform: `scaleX(${facingDirection})` }}
       />
     </button>

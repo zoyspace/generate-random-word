@@ -15,6 +15,7 @@ export function PasswordGeneratorApp() {
     generatePassword,
     historyFilter,
     password,
+    passwordVersion,
     screen,
     setHistoryFilter,
     setScreen,
@@ -24,12 +25,18 @@ export function PasswordGeneratorApp() {
     updateSetting,
   } = usePasswordGenerator();
 
+  const generateWithMascot = () => {
+    setScreen("generator");
+    generatePassword();
+  };
+
   return (
     <main className="flex min-h-dvh flex-col bg-background px-3 py-3 text-foreground transition-colors sm:px-4">
       {screen === "generator" ? (
         <GeneratorScreen
           copiedId={copiedId}
           password={password}
+          passwordVersion={passwordVersion}
           settings={settings}
           onCopyCurrent={() =>
             void copyPassword(password, CURRENT_PASSWORD_COPY_ID)
@@ -51,7 +58,7 @@ export function PasswordGeneratorApp() {
           onFilterChange={setHistoryFilter}
         />
       )}
-      <PasswordMascot onGenerate={() => generatePassword()} />
+      <PasswordMascot onGenerate={generateWithMascot} />
     </main>
   );
 }
