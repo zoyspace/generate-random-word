@@ -1,15 +1,15 @@
 "use client";
 
-import { Icon } from "@iconify-icon/react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { AppIcon, type AppIconName } from "./app-icon";
 
 const THEME_ORDER = ["light", "dark"] as const;
 
 const themeIcon = {
   light: "solar:sun-2-linear",
   dark: "solar:moon-linear",
-};
+} satisfies Record<(typeof THEME_ORDER)[number], AppIconName>;
 
 const themeLabel = {
   light: "Light mode",
@@ -50,7 +50,7 @@ export function ThemeToggle() {
       suppressHydrationWarning
     >
       {mounted ? (
-        <Icon icon={themeIcon[currentTheme]} />
+        <AppIcon icon={themeIcon[currentTheme]} />
       ) : (
         <span className="size-4 rounded-full bg-muted" />
       )}

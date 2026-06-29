@@ -109,7 +109,7 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
         alt=""
         fill
         sizes={MASCOT_IMAGE_SIZES}
-        loading="eager"
+        preload
         className="pointer-events-none object-contain"
         style={{
           opacity: isWalking ? 0 : 1,

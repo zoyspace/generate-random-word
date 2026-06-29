@@ -1,8 +1,7 @@
-import { Icon } from "@iconify-icon/react";
-
 import { cn } from "@/lib/utils";
 
 import type { HistoryFilter, HistoryItem } from "../types";
+import { AppIcon } from "./app-icon";
 import { HistoryCard } from "./history-card";
 
 type HistoryScreenProps = {
@@ -35,7 +34,7 @@ export function HistoryScreen({
           className="flex items-center gap-2 text-lg font-semibold transition hover:translate-x-1 sm:gap-3 sm:text-xl"
           onClick={onBack}
         >
-          <Icon icon="solar:arrow-left-linear" />
+          <AppIcon icon="solar:arrow-left-linear" />
           Back
         </button>
       </header>
@@ -50,7 +49,7 @@ export function HistoryScreen({
             )}
             onClick={() => onFilterChange("all")}
           >
-            <Icon icon="solar:clock-circle-linear" />
+            <AppIcon icon="solar:clock-circle-linear" />
             All History
           </button>
           <button
@@ -61,7 +60,7 @@ export function HistoryScreen({
             )}
             onClick={() => onFilterChange("favorites")}
           >
-            <Icon
+            <AppIcon
               icon={
                 historyFilter === "favorites"
                   ? "solar:heart-bold"

@@ -1,8 +1,7 @@
-import { Icon } from "@iconify-icon/react";
-
 import { cn } from "@/lib/utils";
 
 import type { HistoryItem } from "../types";
+import { AppIcon } from "./app-icon";
 import { CircleAction } from "./circle-action";
 import { PasswordValue } from "./password-value";
 
@@ -31,7 +30,7 @@ export function HistoryCard({
       <div>
         <div className="mb-5 flex items-center justify-between gap-2 sm:mb-6">
           <p className="flex min-w-0 items-center gap-1.5 text-sm font-medium text-muted-foreground sm:gap-2 sm:text-base">
-            <Icon icon="solar:clock-circle-linear" />
+            <AppIcon icon="solar:clock-circle-linear" />
             {item.createdAt}
           </p>
           <div className="flex shrink-0 gap-1.5 text-base sm:gap-2 sm:text-lg">

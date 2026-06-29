@@ -1,10 +1,9 @@
-import { Icon } from "@iconify-icon/react";
-
 import { cn } from "@/lib/utils";
+import { AppIcon, type AppIconName } from "./app-icon";
 
 type CircleActionProps = {
   active?: boolean;
-  icon: string;
+  icon: AppIconName;
   label: string;
   onClick: () => void;
 };
@@ -25,7 +24,7 @@ export function CircleAction({
       )}
       onClick={onClick}
     >
-      <Icon icon={icon} />
+      <AppIcon icon={icon} />
     </button>
   );
 }
