@@ -4,12 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const WALK_FRAMES = [
-  "/mascot/frames/walk-1.png",
-  "/mascot/frames/walk-2.png",
-  "/mascot/frames/walk-3.png",
-  "/mascot/frames/walk-4.png",
+  "/mascot/frames-optimized/walk-1.webp",
+  "/mascot/frames-optimized/walk-2.webp",
+  "/mascot/frames-optimized/walk-3.webp",
+  "/mascot/frames-optimized/walk-4.webp",
 ] as const;
-const IDLE_FRAME = "/mascot/frames/idle-1.png";
+const IDLE_FRAME = "/mascot/frames-optimized/idle-1.webp";
 const WALK_DISTANCE = 180;
 const WALK_DURATION_MS = 900;
 const FRAME_DURATION_MS = 120;
@@ -31,13 +31,6 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
   const [isWalking, setIsWalking] = useState(false);
   const [position, setPosition] = useState(0);
   const walkTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    [IDLE_FRAME, ...WALK_FRAMES].forEach((src) => {
-      const image = new window.Image();
-      image.src = src;
-    });
-  }, []);
 
   useEffect(() => {
     if (!isWalking) {
@@ -117,7 +110,6 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
         fill
         sizes={MASCOT_IMAGE_SIZES}
         loading="eager"
-        unoptimized
         className="pointer-events-none object-contain"
         style={{
           opacity: isWalking ? 0 : 1,
@@ -132,7 +124,6 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
           fill
           sizes={MASCOT_IMAGE_SIZES}
           loading="eager"
-          unoptimized
           className="pointer-events-none object-contain"
           style={{
             opacity: isWalking && frameIndex === index ? 1 : 0,
