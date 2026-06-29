@@ -13,6 +13,7 @@ const IDLE_FRAME = "/mascot/frames/idle-1.png";
 const WALK_DISTANCE = 180;
 const WALK_DURATION_MS = 900;
 const FRAME_DURATION_MS = 120;
+const MASCOT_IMAGE_SIZES = "(min-width: 640px) 128px, 96px";
 const SMALL_MASCOT_SIZE = 96;
 const LARGE_MASCOT_SIZE = 128;
 const SMALL_PAGE_PADDING = 8;
@@ -30,6 +31,13 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
   const [isWalking, setIsWalking] = useState(false);
   const [position, setPosition] = useState(0);
   const walkTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    [IDLE_FRAME, ...WALK_FRAMES].forEach((src) => {
+      const image = new window.Image();
+      image.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     if (!isWalking) {
@@ -104,13 +112,34 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
       onClick={walk}
     >
       <Image
-        src={isWalking ? WALK_FRAMES[frameIndex] : IDLE_FRAME}
-        alt="Password generator mascot"
+        src={IDLE_FRAME}
+        alt=""
         fill
-        sizes="(min-width: 640px) 128px, 96px"
+        sizes={MASCOT_IMAGE_SIZES}
+        loading="eager"
+        unoptimized
         className="pointer-events-none object-contain"
-        style={{ transform: `scaleX(${facingDirection})` }}
+        style={{
+          opacity: isWalking ? 0 : 1,
+          transform: `scaleX(${facingDirection})`,
+        }}
       />
+      {WALK_FRAMES.map((frame, index) => (
+        <Image
+          key={frame}
+          src={frame}
+          alt=""
+          fill
+          sizes={MASCOT_IMAGE_SIZES}
+          loading="eager"
+          unoptimized
+          className="pointer-events-none object-contain"
+          style={{
+            opacity: isWalking && frameIndex === index ? 1 : 0,
+            transform: `scaleX(${facingDirection})`,
+          }}
+        />
+      ))}
     </button>
   );
 }
