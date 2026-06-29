@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
 import { useEffect, useRef, useState } from "react";
 
 const WALK_FRAMES = [
@@ -13,7 +14,6 @@ const IDLE_FRAME = "/mascot/frames-optimized/idle-1.webp";
 const WALK_DISTANCE = 180;
 const WALK_DURATION_MS = 900;
 const FRAME_DURATION_MS = 120;
-const MASCOT_IMAGE_SIZES = "(min-width: 640px) 128px, 96px";
 const SMALL_MASCOT_SIZE = 96;
 const LARGE_MASCOT_SIZE = 128;
 const SMALL_PAGE_PADDING = 8;
@@ -104,27 +104,30 @@ export function PasswordMascot({ onGenerate }: PasswordMascotProps) {
       }}
       onClick={walk}
     >
-      <Image
+      {/* Local 10KB WebP frames avoid the client runtime cost of next/image here. */}
+      <img
         src={IDLE_FRAME}
         alt=""
-        fill
-        sizes={MASCOT_IMAGE_SIZES}
-        preload
-        className="pointer-events-none object-contain"
+        fetchPriority="high"
+        decoding="async"
+        className="pointer-events-none absolute inset-0 h-full w-full object-contain"
+        width={LARGE_MASCOT_SIZE}
+        height={LARGE_MASCOT_SIZE}
         style={{
           opacity: isWalking ? 0 : 1,
           transform: `scaleX(${facingDirection})`,
         }}
       />
       {WALK_FRAMES.map((frame, index) => (
-        <Image
+        <img
           key={frame}
           src={frame}
           alt=""
-          fill
-          sizes={MASCOT_IMAGE_SIZES}
-          loading="eager"
-          className="pointer-events-none object-contain"
+          loading="lazy"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 h-full w-full object-contain"
+          width={LARGE_MASCOT_SIZE}
+          height={LARGE_MASCOT_SIZE}
           style={{
             opacity: isWalking && frameIndex === index ? 1 : 0,
             transform: `scaleX(${facingDirection})`,

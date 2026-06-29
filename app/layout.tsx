@@ -31,6 +31,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/mascot/frames-optimized/idle-1.webp"
+          fetchPriority="high"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <ThemeProvider
           attribute="class"
