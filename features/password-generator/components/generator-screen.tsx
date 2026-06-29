@@ -35,7 +35,7 @@ export function GeneratorScreen({
   settings,
 }: GeneratorScreenProps) {
   return (
-    <section className="mx-auto my-auto w-full max-w-125 rounded-3xl bg-card px-4 pb-10 pt-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:px-8 sm:pb-14 sm:pt-8">
+    <section className="mx-auto my-auto w-full max-w-125 -translate-y-6 rounded-3xl bg-card px-4 pb-10 pt-7 text-card-foreground shadow-2xl animate-in fade-in zoom-in-95 duration-500 sm:-translate-y-8 sm:px-8 sm:pb-14 sm:pt-8">
       <header className="mb-7 flex items-start justify-between gap-3 sm:mb-8 sm:gap-4">
         <h1 className="min-w-0 text-left text-4xl font-black leading-none tracking-tight sm:text-5xl">
           <span className="block">Password</span>
